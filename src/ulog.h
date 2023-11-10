@@ -93,7 +93,6 @@ typedef enum {
   #define ULOG_SUBSCRIBE(a, b) ulog_subscribe(a, b)
   #define ULOG_UNSUBSCRIBE(a) ulog_unsubscribe(a)
   #define ULOG_LEVEL_NAME(a) ulog_level_name(a)
-  #define ulog_level_name(a) ulog_level_name(a)
   #define ULOG(level,...) ulog_message(level,__FILE__, __LINE__, __VA_ARGS__)
   #define ULOG_TRACE(...) ulog_message(ULOG_TRACE_LEVEL, __FILE__, __LINE__, __VA_ARGS__)
   #define ULOG_DEBUG(...) ulog_message(ULOG_DEBUG_LEVEL, __FILE__, __LINE__, __VA_ARGS__)
