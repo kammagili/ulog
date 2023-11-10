@@ -33,37 +33,37 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 int fn_calls[6];
 
-void logger_fn0(ulog_level_t severity, char *msg) {
+void logger_fn0(ulog_level_t severity, const char *file, int line, char *msg) {
   assert(strcmp(msg, "Hello!") == 0);
   fn_calls[0]++;
 }
 
-void logger_fn1(ulog_level_t severity, char *msg) {
+void logger_fn1(ulog_level_t severity, const char *file, int line, char *msg) {
   assert(strcmp(msg, "Hello!") == 0);
   fn_calls[1]++;
 }
 
-void logger_fn2(ulog_level_t severity, char *msg) {
+void logger_fn2(ulog_level_t severity, const char *file, int line, char *msg) {
   assert(strcmp(msg, "Hello!") == 0);
   fn_calls[2]++;
 }
 
-void logger_fn3(ulog_level_t severity, char *msg) {
+void logger_fn3(ulog_level_t severity, const char *file, int line, char *msg) {
   assert(strcmp(msg, "Hello!") == 0);
   fn_calls[3]++;
 }
 
-void logger_fn4(ulog_level_t severity, char *msg) {
+void logger_fn4(ulog_level_t severity, const char *file, int line, char *msg) {
   assert(strcmp(msg, "Hello!") == 0);
   fn_calls[4]++;
 }
 
-void logger_fn5(ulog_level_t severity, char *msg) {
+void logger_fn5(ulog_level_t severity, const char *file, int line, char *msg) {
   assert(strcmp(msg, "Hello!") == 0);
   fn_calls[5]++;
 }
 
-void logger_fn6(ulog_level_t severity, char *msg) {
+void logger_fn6(ulog_level_t severity, const char *file, int line, char *msg) {
   // never actually called
 }
 

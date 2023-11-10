@@ -93,14 +93,16 @@ typedef enum {
   #define ULOG_SUBSCRIBE(a, b) ulog_subscribe(a, b)
   #define ULOG_UNSUBSCRIBE(a) ulog_unsubscribe(a)
   #define ULOG_LEVEL_NAME(a) ulog_level_name(a)
-  #define ULOG(...) ulog_message(__VA_ARGS__)
-  #define ULOG_TRACE(...) ulog_message(ULOG_TRACE_LEVEL, __VA_ARGS__)
-  #define ULOG_DEBUG(...) ulog_message(ULOG_DEBUG_LEVEL, __VA_ARGS__)
-  #define ULOG_INFO(...) ulog_message(ULOG_INFO_LEVEL, __VA_ARGS__)
-  #define ULOG_WARNING(...) ulog_message(ULOG_WARNING_LEVEL, __VA_ARGS__)
-  #define ULOG_ERROR(...) ulog_message(ULOG_ERROR_LEVEL, __VA_ARGS__)
-  #define ULOG_CRITICAL(...) ulog_message(ULOG_CRITICAL_LEVEL, __VA_ARGS__)
-  #define ULOG_ALWAYS(...) ulog_message(ULOG_ALWAYS_LEVEL, __VA_ARGS__)
+  #define ulog_level_name(a) ulog_level_name(a)
+  #define ULOG(level,...) ulog_message(level,__FILE__, __LINE__, __VA_ARGS__)
+  #define ULOG_TRACE(...) ulog_message(ULOG_TRACE_LEVEL, __FILE__, __LINE__, __VA_ARGS__)
+  #define ULOG_DEBUG(...) ulog_message(ULOG_DEBUG_LEVEL, __FILE__, __LINE__, __VA_ARGS__)
+  #define ULOG_INFO(...) ulog_message(ULOG_INFO_LEVEL, __FILE__, __LINE__, __VA_ARGS__)
+  #define ULOG_WARNING(...) ulog_message(ULOG_WARNING_LEVEL, __FILE__, __LINE__, __VA_ARGS__)
+  #define ULOG_ERROR(...) ulog_message(ULOG_ERROR_LEVEL, __FILE__, __LINE__, __VA_ARGS__)
+  #define ULOG_CRITICAL(...) ulog_message(ULOG_CRITICAL_LEVEL, __FILE__, __LINE__, __VA_ARGS__)
+  #define ULOG_ALWAYS(...) ulog_message(ULOG_ALWAYS_LEVEL, __FILE__, __LINE__, __VA_ARGS__)
+
 #else
   // uLog vanishes when disabled at compile time...
   #define ULOG_INIT() do {} while(0)
@@ -134,13 +136,13 @@ typedef enum {
 /**
  * @brief: prototype for uLog subscribers.
  */
-typedef void (*ulog_function_t)(ulog_level_t severity, char *msg);
+typedef void (*ulog_function_t)(ulog_level_t severity, const char *file, int line, const char *msg);
 
 void ulog_init(void);
 ulog_err_t ulog_subscribe(ulog_function_t fn, ulog_level_t threshold);
 ulog_err_t ulog_unsubscribe(ulog_function_t fn);
 const char *ulog_level_name(ulog_level_t level);
-void ulog_message(ulog_level_t severity, const char *fmt, ...);
+void ulog_message(ulog_level_t severity, const char *file, int line, const char *fmt, ...);
 
 #ifdef __cplusplus
 }
